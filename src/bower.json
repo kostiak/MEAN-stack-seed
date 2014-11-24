@@ -1,0 +1,12 @@
+{
+    "name": "MEAN-stack-seed",
+    "version": "1.0.0",
+    "description": "Project K",
+    "private": true,
+    "dependencies": {
+        "angular": "~1.2.23",
+        "angular-route": "~1.2.23",
+        "angular-mocks": "~1.2.23",
+        "fontawesome": "~4.2.0"
+    }
+}

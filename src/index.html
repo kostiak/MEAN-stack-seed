@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="AppCtrl">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- build:css styles/style.css -->
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="styles/kube.css"/>
+    <link rel="stylesheet" href="styles/main.css"/>
+    <!-- endbuild -->
+</head>
+<body>
+<header class="header units-row">
+    <div class="unit-30"><h1><a href="#/reload">My App</a></h1></div>
+    <nav class="navbar right">
+        <ul>
+            <li ng-if="!loggedIn"><a href="#/login">login</a></li>
+            <li ng-if="!loggedIn"><a href="#/register">register</a></li>
+
+            <li ng-if="loggedIn"><a href="#/profile">{{ user.email }}</a></li>
+            <li ng-if="loggedIn"><a href='' ng-click="logout()">logout</a></li>
+        </ul>
+    </nav>
+</header>
+<div class="main units-row">
+    <div class="unit-80 unit-centered" ng-view></div>
+</div>
+
+<footer>
+    <div>My App v<span app-version></span></div>
+</footer>
+
+<!-- build:jsv scripts/vendor.min.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-gravatar/build/md5.js"></script>
+<script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
+<!-- endbuild -->
+<!-- build:js scripts/dist.min.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/app.js"></script>
+<script src="scripts/controllers/main.js"></script>
+<script src="scripts/controllers/login.js"></script>
+<script src="scripts/controllers/register.js"></script>
+<script src="scripts/controllers/profile.js"></script>
+<script src="scripts/directives/appVersion.js"></script>
+<script src="scripts/directives/passwordMatch.js"></script>
+<script src="scripts/filters/reverse.js"></script>
+<script src="scripts/services/version.js"></script>
+<script src="scripts/services/User.js"></script>
+<!-- endbuild -->
+<!-- build:clear -->
+<script src="//localhost:35729/livereload.js"></script>
+<!-- endbuild -->
+</body>
+</html>

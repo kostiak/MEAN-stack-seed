@@ -1,0 +1,38 @@
+<div class="forms">
+    <div class="tools-alert tools-alert-red" ng-show="err">{{ err }}</div>
+
+    <form name="loginForm" class="unit-75 unit-centered">
+        <label for="email">Email <span class="forms-desc">Please enter your email</span>
+            <input class="width-100" type="email" id="email" ng-model="formData.email"
+                   name="email" required/>
+
+            <div class="tools-alert tools-alert-red"
+                 ng-show="loginForm.email.$error.required &&
+                          loginForm.email.$dirty">
+                required
+            </div>
+            <div class="tools-alert tools-alert-red"
+                 ng-show="!loginForm.email.$error.required &&
+                           loginForm.email.$error.email &&
+                           loginForm.email.$dirty">
+                invalid email
+            </div>
+        </label>
+
+        <label for="password">Password <span class="forms-desc">Please enter your password</span>
+            <input class="width-100" type="password" id="password" ng-model="formData.password"
+                   name="password" required/>
+
+            <div class="tools-alert tools-alert-red"
+                 ng-show="loginForm.password.$error.required &&
+                          loginForm.password.$dirty">
+                required
+            </div>
+        </label>
+
+        <p>
+            <button ng-disabled="loginForm.$invalid" class="btn btn-blue width-100" ng-click="login()">Login</button>
+        </p>
+
+    </form>
+</div>

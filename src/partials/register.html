@@ -1,0 +1,71 @@
+<div class="forms">
+    <div class="tools-alert tools-alert-red" ng-show="err">{{ err }}</div>
+
+    <form name="registerForm" class="unit-75 unit-centered">
+        <label for="email">Email <span class="forms-desc">Please enter your email</span>
+            <input class="width-100" type="email" id="email" ng-model="formData.email"
+                   name="email" required/>
+
+            <div class="tools-alert tools-alert-red"
+                 ng-show="registerForm.email.$error.required &&
+                          registerForm.email.$dirty">
+                required
+            </div>
+            <div class="tools-alert tools-alert-red"
+                 ng-show="!registerForm.email.$error.required &&
+                           registerForm.email.$error.email &&
+                           registerForm.email.$dirty">
+                invalid email
+            </div>
+        </label>
+
+        <label for="password">Password <span class="forms-desc">Please enter a password you want to use</span>
+            <input class="width-100" type="password" id="password" ng-model="formData.password"
+                   name="password" ng-minlength=6 ng-pattern="/(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z])/" required/>
+
+            <div class="tools-alert tools-alert-red"
+                 ng-show="registerForm.password.$error.required &&
+                          registerForm.password.$dirty">
+                required
+            </div>
+            <div class="tools-alert tools-alert-red"
+                 ng-show="!registerForm.password.$error.required &&
+                           registerForm.password.$error.minlength &&
+                           registerForm.password.$dirty">
+                Passwords must be at least 6 characters long.
+            </div>
+            <div class="tools-alert tools-alert-red"
+                 ng-show="!registerForm.password.$error.required &&
+                          !registerForm.password.$error.minlength &&
+                          !registerForm.password.$error.maxlength &&
+                           registerForm.password.$error.pattern &&
+                           registerForm.password.$dirty">
+                Must contain one lower &amp; uppercase letter, and one non-alpha character (a number or a symbol.)
+            </div>
+
+        </label>
+
+        <label for="password2">Password <span class="forms-desc">Please repeat your password to verify</span>
+            <input class="width-100" type="password" id="password2" ng-model="formData.password2"
+                   name="password2" required password-match="formData.password"/>
+
+            <div class="tools-alert tools-alert-red"
+                 ng-show="registerForm.password.$valid &&
+                          registerForm.password2.$error.required">
+                Please confirm your password.
+            </div>
+            <div class="tools-alert tools-alert-red"
+                 ng-show=" registerForm.password.$valid &&
+                          !registerForm.password2.$error.required &&
+                           registerForm.password2.$error.unique">
+                Passwords do not match.
+            </div>
+        </label>
+
+        <p>
+            <button ng-disabled="registerForm.$invalid" class="btn btn-blue width-100" ng-click="register()">Register
+            </button>
+        </p>
+
+    </form>
+</div>
